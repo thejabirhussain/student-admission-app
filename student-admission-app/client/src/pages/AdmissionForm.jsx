@@ -15,16 +15,31 @@ const AdmissionForm = () => {
       [name]: value,
       ...(name.startsWith('marksObtained') ? { marksObtained: { ...prev.marksObtained, [name.split('.')[1]]: value } } : {}),
       ...(name.startsWith('aadharDetails') ? { aadharDetails: { ...prev.aadharDetails, [name.split('.')[1]]: value } } : {}),
-      ...(name.startsWith('bankDetails') ? { bankDetails: { ...prev.bankDetails, [name.split('.')[1]]: value } } : {})
+      ...(name.startsWith('bankDetails') ? { bankDetails: { ...prev.bankDetails, [name.split('.')[1]]: value } } : {}),
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('https://student-admission-app-1.onrender.com/api/students', formData);
-    navigate('/students');
+    try {
+      console.log('Sending request to:', 'https://student-admission-app-1.onrender.com/api/students');
+      const response = await axios.post(
+        'https://student-admission-app-1.onrender.com/api/students',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      console.log('Success:', response.data);
+      navigate('/students');
+    } catch (error) {
+      console.error('AxiosError:', error.response ? error.response.data : error.message);
+    }
   };
 
+  // Rest of the form JSX remains unchanged
   return (
     <div className="container mt-5">
       <div className="form-header">
