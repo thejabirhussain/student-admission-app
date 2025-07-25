@@ -8,7 +8,7 @@ const StudentList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/students')
+    axios.get('https://student-admission-app-1.onrender.com/api/students')
       .then(res => setStudents(res.data))
       .catch(err => console.error(err));
   }, []);
