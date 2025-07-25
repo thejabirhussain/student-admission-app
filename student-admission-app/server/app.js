@@ -5,7 +5,14 @@ require('dotenv').config();
 const studentRoutes = require('./routes/studentRoutes');
 
 const app = express();
-app.use(cors());
+
+// Configure CORS explicitly
+app.use(cors({
+  origin: 'https://student-admission-app-2-0.onrender.com', // Allow frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow necessary methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
+}));
+
 app.use(express.json());
 app.use('/api', studentRoutes);
 
