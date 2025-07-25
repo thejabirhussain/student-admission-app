@@ -8,7 +8,7 @@ const StudentDetail = () => {
   const [student, setStudent] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/students/${id}`)
+    axios.get(`https://student-admission-app-1.onrender.com/api/students/${id}`)
       .then(res => setStudent(res.data))
       .catch(err => console.error(err));
   }, [id]);
