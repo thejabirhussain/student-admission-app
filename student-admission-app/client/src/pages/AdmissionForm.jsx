@@ -21,7 +21,7 @@ const AdmissionForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/api/students', formData);
+    await axios.post('https://student-admission-app-1.onrender.com/api/students', formData);
     navigate('/students');
   };
 
