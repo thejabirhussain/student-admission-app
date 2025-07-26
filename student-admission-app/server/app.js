@@ -8,11 +8,12 @@ const app = express();
 
 // Configure CORS explicitly
 app.use(cors({
-  origin: ['https://student-admission-app-2-0.onrender.com', 'http://localhost:5173'], // Allow frontend and local dev
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Include OPTIONS for preflight
-  allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
-  credentials: false, // Set to true if using cookies/auth (optional)
+  origin: ['https://student-admission-app-2-0.onrender.com/', 'http://localhost:5173'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
+
 
 app.use(express.json());
 app.use('/api', studentRoutes);
