@@ -22,15 +22,12 @@ const AdmissionForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log('Sending request to:', 'https://student-admission-app-1.onrender.com/api/students');
+      // Use environment variable for API URL
+      const API_URL = import.meta.env.VITE_API_URL;
       const response = await axios.post(
-        'https://student-admission-app-1.onrender.com/api/students',
+        `${API_URL}/students`,
         formData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
+        { headers: { 'Content-Type': 'application/json' } }
       );
       console.log('Success:', response.data);
       navigate('/students');
